@@ -1,0 +1,1485 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Our Magical Memories ❤️</title>
+
+<script src="https://cdn.jsdelivr.net/npm/page-flip@2.0.7/dist/js/page-flip.browser.js"></script>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --pink: #ffc4df;
+    --gold: #ffe4a3;
+    --purple: #241333;
+}
+
+body {
+    min-height: 100vh;
+    font-family: Georgia, serif;
+    color: white;
+    overflow-x: hidden;
+    background: #100d29;
+}
+
+/* =================================
+   MAGICAL FANTASY BACKGROUND
+================================= */
+
+#magicBackground {
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+    z-index: 0;
+    pointer-events: none;
+    background:
+        radial-gradient(ellipse at 50% 20%, rgba(129,83,176,.45), transparent 45%),
+        radial-gradient(ellipse at 15% 60%, rgba(81,38,115,.55), transparent 40%),
+        radial-gradient(ellipse at 85% 65%, rgba(116,42,104,.4), transparent 40%),
+        linear-gradient(180deg,#100d29 0%,#24143e 45%,#351c4d 75%,#120e2b 100%);
+}
+
+.moon {
+    position: absolute;
+    width: 110px;
+    height: 110px;
+    top: 8%;
+    right: 13%;
+    border-radius: 50%;
+    background: radial-gradient(circle at 35% 35%,#fffde9,#f8d9a7 65%,#dca9b7);
+    box-shadow:
+        0 0 30px rgba(255,231,186,.8),
+        0 0 90px rgba(255,210,170,.35);
+    animation: moonGlow 5s ease-in-out infinite alternate;
+}
+
+@keyframes moonGlow {
+    to {
+        box-shadow: 0 0 55px rgba(255,231,186,.95),
+                    0 0 120px rgba(255,210,170,.55);
+    }
+}
+
+/* distant stars */
+
+.star {
+    position: absolute;
+    width: 3px;
+    height: 3px;
+    border-radius: 50%;
+    background: white;
+    box-shadow: 0 0 8px white,0 0 15px #f8caff;
+    animation: twinkle 2s ease-in-out infinite alternate;
+}
+
+@keyframes twinkle {
+    from { opacity: .2; transform: scale(.7); }
+    to { opacity: 1; transform: scale(1.5); }
+}
+
+/* fantasy mountains */
+
+.mountain {
+    position: absolute;
+    bottom: 12%;
+    width: 0;
+    height: 0;
+    border-left: 230px solid transparent;
+    border-right: 230px solid transparent;
+    border-bottom: 300px solid #211b43;
+    opacity: .85;
+}
+
+.mountain.one {
+    left: -140px;
+}
+
+.mountain.two {
+    right: -150px;
+    border-bottom-color: #302047;
+    transform: scale(1.2);
+}
+
+/* palace */
+
+.palace {
+    position: absolute;
+    bottom: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 330px;
+    height: 245px;
+    opacity: .8;
+    filter: drop-shadow(0 0 18px rgba(255,190,220,.25));
+}
+
+.palace-body {
+    position: absolute;
+    bottom: 0;
+    left: 55px;
+    width: 220px;
+    height: 155px;
+    background: linear-gradient(90deg,#302044,#695078,#302044);
+    border: 2px solid rgba(255,220,190,.35);
+}
+
+.palace-body::before {
+    content: "";
+    position: absolute;
+    left: 72px;
+    bottom: 0;
+    width: 75px;
+    height: 125px;
+    border-radius: 45px 45px 0 0;
+    background: #17142f;
+    border: 2px solid rgba(255,220,190,.4);
+}
+
+.tower {
+    position: absolute;
+    bottom: 145px;
+    width: 62px;
+    height: 95px;
+    background: linear-gradient(90deg,#403052,#81638a,#403052);
+    border: 1px solid rgba(255,220,190,.3);
+}
+
+.tower.left { left: 20px; }
+.tower.right { right: 20px; }
+
+.tower::before {
+    content: "";
+    position: absolute;
+    left: -5px;
+    top: -48px;
+    width: 0;
+    height: 0;
+    border-left: 35px solid transparent;
+    border-right: 35px solid transparent;
+    border-bottom: 50px solid #98718d;
+}
+
+.tower::after {
+    content: "";
+    position: absolute;
+    width: 9px;
+    height: 24px;
+    background: #ffe3ae;
+    box-shadow: 0 0 15px #ffda9a;
+    left: 26px;
+    top: 25px;
+    border-radius: 10px;
+}
+
+/* glowing lake */
+
+.lake {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 14%;
+    background:
+        linear-gradient(180deg,rgba(139,94,157,.2),rgba(28,20,56,.9)),
+        repeating-linear-gradient(0deg,transparent 0 9px,rgba(255,211,239,.08) 10px 11px);
+    box-shadow: 0 -15px 50px rgba(192,124,204,.12);
+}
+
+/* trees */
+
+.tree {
+    position: absolute;
+    bottom: 10%;
+    width: 100px;
+    height: 210px;
+    opacity: .9;
+}
+
+.tree::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 45px;
+    width: 12px;
+    height: 120px;
+    background: #171329;
+}
+
+.tree::after {
+    content: "♣";
+    position: absolute;
+    font-size: 130px;
+    color: #171329;
+    top: -15px;
+    left: -8px;
+    text-shadow: 0 0 15px rgba(176,119,186,.2);
+}
+
+.tree.left { left: 1%; transform: scale(1.2); }
+.tree.right { right: 1%; transform: scale(1.4); }
+
+/* fireflies */
+
+.firefly {
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: #fff4a8;
+    box-shadow: 0 0 12px 4px rgba(255,226,133,.65);
+    animation: fireflyMove 5s ease-in-out infinite alternate;
+}
+
+@keyframes fireflyMove {
+    0% { transform: translate(0,0); opacity: .2; }
+    50% { opacity: 1; }
+    100% { transform: translate(35px,-55px); opacity: .4; }
+}
+
+/* butterflies */
+
+.butterfly {
+    position: absolute;
+    font-size: 25px;
+    animation: butterflyFly 12s ease-in-out infinite;
+    filter: drop-shadow(0 0 8px #ffbce8);
+}
+
+@keyframes butterflyFly {
+    0% { transform: translate(0,0) rotate(0deg); }
+    25% { transform: translate(70px,-50px) rotate(15deg); }
+    50% { transform: translate(130px,25px) rotate(-15deg); }
+    75% { transform: translate(50px,70px) rotate(15deg); }
+    100% { transform: translate(0,0) rotate(0deg); }
+}
+
+/* floating hearts */
+
+.floating-heart {
+    position: fixed;
+    bottom: -40px;
+    z-index: 1;
+    pointer-events: none;
+    animation: heartFloat linear forwards;
+}
+
+@keyframes heartFloat {
+    to {
+        transform: translateY(-115vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* petals */
+
+.petal {
+    position: fixed;
+    top: -30px;
+    z-index: 1;
+    pointer-events: none;
+    animation: petalFall linear forwards;
+}
+
+@keyframes petalFall {
+    to {
+        transform: translateY(110vh) rotate(650deg);
+        opacity: 0;
+    }
+}
+
+/* =================================
+   SCREENS
+================================= */
+
+.screen {
+    display: none;
+    position: relative;
+    z-index: 3;
+    min-height: 100vh;
+    width: 100%;
+    padding: 25px;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+}
+
+.screen.active {
+    display: flex;
+}
+
+.intro-card {
+    width: min(520px,95%);
+    padding: 35px 25px;
+    border-radius: 25px;
+    background: rgba(27,17,49,.62);
+    border: 1px solid rgba(255,220,240,.35);
+    box-shadow:
+        0 15px 60px rgba(0,0,0,.35),
+        0 0 35px rgba(255,190,220,.16),
+        inset 0 0 25px rgba(255,255,255,.06);
+    backdrop-filter: blur(14px);
+}
+
+h1 {
+    color: #ffe4f1;
+    font-size: clamp(30px,6vw,46px);
+    text-shadow: 0 0 18px rgba(255,180,220,.55);
+    margin-bottom: 15px;
+}
+
+.intro-card p {
+    font-size: 18px;
+    line-height: 1.7;
+    margin-bottom: 20px;
+    color: #fff0f7;
+}
+
+.main-btn {
+    cursor: pointer;
+    border: 1px solid rgba(255,255,255,.5);
+    padding: 14px 27px;
+    border-radius: 30px;
+    background: linear-gradient(135deg,#ffe6f2,#eab4d4);
+    color: #522544;
+    font-size: 16px;
+    font-weight: bold;
+    margin: 8px;
+    box-shadow: 0 5px 25px rgba(255,185,220,.2);
+    transition: .3s;
+}
+
+.main-btn:hover {
+    transform: translateY(-4px) scale(1.04);
+    box-shadow: 0 8px 30px rgba(255,185,220,.45);
+}
+
+/* =================================
+   MAGICAL OPENING DOOR
+================================= */
+
+#introScreen {
+    overflow: hidden;
+}
+
+.museum-title {
+    font-size: clamp(30px,6vw,48px);
+    margin-bottom: 10px;
+}
+
+.museum-subtitle {
+    color: #f8d9ee;
+    margin-bottom: 30px;
+    font-size: 17px;
+    line-height: 1.6;
+}
+
+.door-scene {
+    position: relative;
+    width: min(360px,85vw);
+    height: 300px;
+    perspective: 1000px;
+    margin: 0 auto 25px;
+}
+
+.door-frame {
+    position: absolute;
+    inset: 0;
+    border: 12px solid #d6a76d;
+    border-radius: 170px 170px 5px 5px;
+    background: linear-gradient(90deg,#321a36,#80506b,#321a36);
+    box-shadow:
+        0 0 20px #f8d39a,
+        0 0 70px rgba(255,193,123,.3),
+        inset 0 0 30px #160c24;
+    overflow: hidden;
+}
+
+.door-light {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle,#fff1bd,#e9a7d8 35%,transparent 75%);
+    opacity: .25;
+}
+
+.door {
+    position: absolute;
+    top: 0;
+    width: 50%;
+    height: 100%;
+    background:
+        repeating-linear-gradient(90deg,rgba(255,255,255,.05) 0 2px,transparent 3px 35px),
+        linear-gradient(90deg,#4c243c,#a36a77,#52273f);
+    border: 3px solid #e3b978;
+    box-shadow: inset 0 0 25px rgba(0,0,0,.6);
+    transition: transform 2.5s cubic-bezier(.7,0,.2,1);
+    z-index: 2;
+}
+
+.door.left {
+    left: 0;
+    transform-origin: left center;
+}
+
+.door.right {
+    right: 0;
+    transform-origin: right center;
+}
+
+.door.open.left {
+    transform: rotateY(-115deg);
+}
+
+.door.open.right {
+    transform: rotateY(115deg);
+}
+
+.door-knob {
+    position: absolute;
+    top: 55%;
+    right: 13px;
+    width: 13px;
+    height: 13px;
+    border-radius: 50%;
+    background: #ffe4a3;
+    box-shadow: 0 0 12px #fff0b8;
+}
+
+.door.right .door-knob {
+    left: 13px;
+    right: auto;
+}
+
+.key {
+    font-size: 42px;
+    display: block;
+    margin: 12px;
+    animation: keyGlow 2s infinite alternate;
+}
+
+@keyframes keyGlow {
+    to { filter: drop-shadow(0 0 15px #ffe8a7); transform: rotate(12deg); }
+}
+
+.opening-text {
+    color: #ffe5b8;
+    letter-spacing: 2px;
+    font-size: 14px;
+    margin-top: 8px;
+}
+
+/* =================================
+   MAGAZINE
+================================= */
+
+#bookScreen {
+    padding: 15px;
+    overflow: hidden;
+}
+
+.book-heading {
+    font-size: clamp(22px,4vw,32px);
+    margin: 10px 0 18px;
+    color: #ffe1ef;
+    text-shadow: 0 0 15px rgba(255,190,220,.6);
+}
+
+#book {
+    width: min(1000px,94vw);
+    height: min(650px,68vh);
+    min-height: 350px;
+    margin: auto;
+    position: relative;
+}
+
+.page {
+    overflow: hidden;
+    background: #fffdf9;
+    color: #573d46;
+}
+
+.page-content {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+    background: #fffdf9;
+}
+
+.page-content img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.spacer-page {
+    width: 100%;
+    height: 100%;
+    background: transparent !important;
+}
+
+.page:has(.spacer-page) {
+    background: transparent !important;
+    box-shadow: none !important;
+}
+
+.stf__item {
+    box-shadow: 0 0 18px rgba(0,0,0,.35);
+}
+
+.stf__block {
+    perspective: 2000px;
+}
+
+/* controls */
+
+.book-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 18px auto 5px;
+}
+
+.control-btn {
+    cursor: pointer;
+    background: linear-gradient(135deg,#ffeaf5,#e7b8d6);
+    color: #5e3151;
+    border-radius: 25px;
+    padding: 11px 19px;
+    font-size: 14px;
+    font-weight: bold;
+    border: none;
+    transition: .25s;
+}
+
+.control-btn:hover {
+    transform: translateY(-3px);
+    background: white;
+}
+
+#pageCounter {
+    color: #ffe4ed;
+    font-size: 14px;
+    min-width: 120px;
+}
+
+/* =================================
+   MUSIC PLAYER
+================================= */
+
+.music-player {
+    position: fixed;
+    top: 15px;
+    right: 15px;
+    z-index: 100;
+    display: none;
+    align-items: center;
+    gap: 5px;
+    padding: 8px;
+    background: rgba(255,245,251,.95);
+    border-radius: 30px;
+    box-shadow: 0 4px 20px rgba(0,0,0,.25);
+}
+
+.music-player button {
+    cursor: pointer;
+    background: #713b68;
+    color: white;
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    font-size: 14px;
+    border: none;
+}
+
+#songName {
+    color: #77334e;
+    font-size: 12px;
+    padding: 0 5px;
+}
+
+/* =================================
+   ENDING MEMORY BOX
+================================= */
+
+#thankYouScreen {
+    overflow: hidden;
+}
+
+.ending-card {
+    width: min(600px,95%);
+    padding: 30px 20px;
+    background: rgba(30,16,48,.58);
+    border: 1px solid rgba(255,222,240,.3);
+    border-radius: 28px;
+    backdrop-filter: blur(12px);
+    box-shadow: 0 0 50px rgba(255,190,220,.15);
+}
+
+.thankyou-title {
+    font-size: clamp(35px,7vw,58px);
+    color: #ffe6ef;
+    margin-bottom: 15px;
+}
+
+.memory-box {
+    position: relative;
+    width: 180px;
+    height: 140px;
+    margin: 70px auto 45px;
+    perspective: 700px;
+}
+
+.box-base {
+    position: absolute;
+    bottom: 0;
+    width: 180px;
+    height: 100px;
+    background: linear-gradient(135deg,#c27a9c,#713c6e,#d9a1ba);
+    border: 3px solid #ffe0a3;
+    border-radius: 5px 5px 18px 18px;
+    box-shadow: 0 0 30px rgba(255,199,160,.4);
+}
+
+.box-base::before {
+    content: "♡";
+    position: absolute;
+    top: 22px;
+    left: 68px;
+    color: #ffe8c0;
+    font-size: 42px;
+}
+
+.box-lid {
+    position: absolute;
+    top: 0;
+    width: 180px;
+    height: 45px;
+    border-radius: 8px;
+    background: linear-gradient(135deg,#e6b4c7,#8d4b7e,#e6b4c7);
+    border: 3px solid #ffe0a3;
+    transform-origin: bottom;
+    transition: transform 1.5s ease;
+    z-index: 3;
+}
+
+.box-lid.open {
+    transform: rotateX(-115deg) translateY(-12px);
+}
+
+.box-glow {
+    position: absolute;
+    width: 190px;
+    height: 180px;
+    bottom: 10px;
+    left: -5px;
+    border-radius: 50%;
+    background: radial-gradient(circle,rgba(255,222,148,.7),transparent 70%);
+    opacity: 0;
+    transition: opacity 1.5s;
+}
+
+.box-glow.show {
+    opacity: 1;
+}
+
+.ending-message {
+    color: #fff0f8;
+    font-size: clamp(17px,3vw,22px);
+    line-height: 1.7;
+    margin: 15px auto;
+}
+
+/* mobile */
+
+@media(max-width:650px) {
+    #book {
+        width: 96vw;
+        height: 60vh;
+        min-height: 300px;
+    }
+
+    .book-controls {
+        gap: 6px;
+    }
+
+    .control-btn {
+        padding: 9px 13px;
+        font-size: 12px;
+    }
+
+    .music-player {
+        top: 8px;
+        right: 8px;
+    }
+
+    .moon {
+        width: 70px;
+        height: 70px;
+    }
+
+    .palace {
+        transform: translateX(-50%) scale(.7);
+        transform-origin: bottom center;
+    }
+
+    .mountain {
+        transform: scale(.7);
+        transform-origin: bottom;
+    }
+}
+
+@media(prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- MAGICAL SCENERY -->
+
+<div id="magicBackground">
+    <div class="moon"></div>
+    <div class="mountain one"></div>
+    <div class="mountain two"></div>
+
+    <div class="palace">
+        <div class="tower left"></div>
+        <div class="tower right"></div>
+        <div class="palace-body"></div>
+    </div>
+
+    <div class="tree left"></div>
+    <div class="tree right"></div>
+    <div class="lake"></div>
+</div>
+
+<!-- MUSIC PLAYER -->
+
+<div class="music-player" id="musicPlayer">
+    <button onclick="previousSong()">⏮</button>
+    <button onclick="toggleMusic()" id="playPauseBtn">Ⅱ</button>
+    <button onclick="nextSong()">⏭</button>
+    <span id="songName">Song 1</span>
+</div>
+
+<audio id="music"></audio>
+
+<!-- OPENING SCREEN -->
+
+<section id="introScreen" class="screen active">
+
+    <div class="intro-card">
+
+        <h1 class="museum-title">The Secret Memory Garden ✨</h1>
+
+        <p class="museum-subtitle">
+            Beyond this magical door lies a little world<br>
+            filled with memories, love and beautiful moments.
+        </p>
+
+        <div class="door-scene">
+
+            <div class="door-frame">
+                <div class="door-light"></div>
+
+                <div class="door left" id="leftDoor">
+                    <span class="door-knob"></span>
+                </div>
+
+                <div class="door right" id="rightDoor">
+                    <span class="door-knob"></span>
+                </div>
+            </div>
+
+        </div>
+
+        <span class="key">🗝️</span>
+
+        <p class="opening-text" id="openingText">
+            A LITTLE KEY TO A WORLD OF MEMORIES
+        </p>
+
+        <button class="main-btn" id="unlockButton" onclick="unlockMuseum()">
+            Unlock the Memories 💗
+        </button>
+
+    </div>
+
+</section>
+
+<!-- MAGAZINE -->
+
+<section id="bookScreen" class="screen">
+
+    <h2 class="book-heading">Our Moments Together ❤️</h2>
+
+    <div id="book">
+
+        <!-- LEFT SPACER -->
+        <div class="page">
+            <div class="page-content spacer-page"></div>
+        </div>
+
+        <!-- FRONT COVER: IMAGE 53 -->
+        <div class="page">
+            <div class="page-content">
+                <img src="1000364053.jpg" alt="Front Cover">
+            </div>
+        </div>
+
+        <!-- INSIDE PAGES: 54 TO 63 -->
+
+        <div class="page">
+            <div class="page-content">
+                <img src="1000364054.jpg" alt="Memory 1">
+            </div>
+        </div>
+
+        <div class="page">
+            <div class="page-content">
+                <img src="1000364055.jpg" alt="Memory 2">
+            </div>
+        </div>
+
+        <div class="page">
+            <div class="page-content">
+                <img src="1000364056.jpg" alt="Memory 3">
+            </div>
+        </div>
+
+        <div class="page">
+            <div class="page-content">
+                <img src="1000364057.jpg" alt="Memory 4">
+            </div>
+        </div>
+
+        <div class="page">
+            <div class="page-content">
+                <img src="1000364058.jpg" alt="Memory 5">
+            </div>
+        </div>
+
+        <div class="page">
+            <div class="page-content">
+                <img src="1000364059.jpg" alt="Memory 6">
+            </div>
+        </div>
+
+        <div class="page">
+            <div class="page-content">
+                <img src="1000364060.jpg" alt="Memory 7">
+            </div>
+        </div>
+
+        <div class="page">
+            <div class="page-content">
+                <img src="1000364061.jpg" alt="Memory 8">
+            </div>
+        </div>
+
+        <div class="page">
+            <div class="page-content">
+                <img src="1000364062.jpg" alt="Memory 9">
+            </div>
+        </div>
+
+        <div class="page">
+            <div class="page-content">
+                <img src="1000364063.jpg" alt="Memory 10">
+            </div>
+        </div>
+
+        <!-- BACK COVER: IMAGE 64 -->
+        <div class="page">
+            <div class="page-content">
+                <img src="1000364064.jpg" alt="Back Cover">
+            </div>
+        </div>
+
+        <!-- RIGHT SPACER -->
+        <div class="page">
+            <div class="page-content spacer-page"></div>
+        </div>
+
+    </div>
+
+    <div class="book-controls">
+
+        <button class="control-btn" onclick="previousPage()">
+            ← Previous
+        </button>
+
+        <span id="pageCounter">Front Cover</span>
+
+        <button class="control-btn" id="nextButton" onclick="nextPage()">
+            Next →
+        </button>
+
+        <button class="control-btn" onclick="closeMagazine()">
+            Close Magazine
+        </button>
+
+    </div>
+
+</section>
+
+<!-- ENDING SCREEN -->
+
+<section id="thankYouScreen" class="screen">
+
+    <div class="ending-card">
+
+        <h1 class="thankyou-title">
+            Every Memory Has a Place in My Heart ❤️
+        </h1>
+
+        <div class="memory-box">
+
+            <div class="box-glow" id="boxGlow"></div>
+            <div class="box-base"></div>
+            <div class="box-lid" id="boxLid"></div>
+
+        </div>
+
+        <p class="ending-message">
+            Some moments become memories.<br>
+            Some memories become stories.<br>
+            And some stories stay in our hearts forever. 💗
+        </p>
+
+        <p class="ending-message">
+            With love, always. ✨
+        </p>
+
+        <button class="main-btn" onclick="replayStory()">
+            Relive Our Memories ↻
+        </button>
+
+    </div>
+
+</section>
+
+<script>
+
+/* =================================
+   BACKGROUND PARTICLES
+================================= */
+
+function createStars() {
+    const bg = document.getElementById("magicBackground");
+
+    for (let i = 0; i < 100; i++) {
+        const star = document.createElement("div");
+        star.className = "star";
+
+        star.style.left = Math.random() * 100 + "%";
+        star.style.top = Math.random() * 75 + "%";
+        star.style.animationDelay = Math.random() * 3 + "s";
+        star.style.opacity = Math.random();
+
+        bg.appendChild(star);
+    }
+
+    for (let i = 0; i < 25; i++) {
+        const light = document.createElement("div");
+        light.className = "firefly";
+
+        light.style.left = Math.random() * 100 + "%";
+        light.style.top = (30 + Math.random() * 65) + "%";
+        light.style.animationDelay = Math.random() * 5 + "s";
+
+        bg.appendChild(light);
+    }
+
+    const butterflies = ["🦋","🦋","✨"];
+
+    butterflies.forEach((symbol, i) => {
+        const butterfly = document.createElement("div");
+        butterfly.className = "butterfly";
+        butterfly.innerText = symbol;
+        butterfly.style.left = (10 + i * 35) + "%";
+        butterfly.style.top = (35 + i * 12) + "%";
+        butterfly.style.animationDelay = i * 2 + "s";
+
+        bg.appendChild(butterfly);
+    });
+}
+
+createStars();
+
+/* =================================
+   SCREEN MANAGEMENT
+================================= */
+
+function showScreen(id) {
+    document.querySelectorAll(".screen").forEach(screen => {
+        screen.classList.remove("active");
+    });
+
+    document.getElementById(id).classList.add("active");
+}
+
+/* =================================
+   MUSIC
+================================= */
+
+const songs = ["song1.mp3", "song2.mp3"];
+const songTitles = ["Song 1", "Song 2"];
+
+let currentSong = 0;
+
+const music = document.getElementById("music");
+const playPauseBtn = document.getElementById("playPauseBtn");
+
+function loadSong() {
+    music.src = songs[currentSong];
+
+    document.getElementById("songName").innerText =
+        songTitles[currentSong];
+}
+
+function playMusic() {
+    music.play().then(() => {
+        playPauseBtn.innerText = "Ⅱ";
+    }).catch(() => {
+        playPauseBtn.innerText = "▶";
+    });
+}
+
+function toggleMusic() {
+    if (music.paused) {
+        playMusic();
+    } else {
+        music.pause();
+        playPauseBtn.innerText = "▶";
+    }
+}
+
+function nextSong() {
+    currentSong = (currentSong + 1) % songs.length;
+    loadSong();
+    playMusic();
+}
+
+function previousSong() {
+    currentSong = (currentSong - 1 + songs.length) % songs.length;
+    loadSong();
+    playMusic();
+}
+
+music.addEventListener("ended", nextSong);
+
+loadSong();
+
+/* =================================
+   OPENING ANIMATION
+================================= */
+
+let museumOpening = false;
+
+function unlockMuseum() {
+    if (museumOpening) return;
+
+    museumOpening = true;
+
+    const button = document.getElementById("unlockButton");
+    button.disabled = true;
+    button.innerText = "Opening the magical door... ✨";
+
+    document.getElementById("openingText").innerText =
+        "YOUR MEMORIES ARE WAITING...";
+
+    // Music starts after the visitor's click
+    currentSong = 0;
+    loadSong();
+    playMusic();
+
+    // Open doors
+    setTimeout(() => {
+        document.getElementById("leftDoor").classList.add("open");
+        document.getElementById("rightDoor").classList.add("open");
+    }, 250);
+
+    // Golden sparkles
+    createSparkles();
+
+    // Enter magazine
+    setTimeout(() => {
+        openMagazine();
+    }, 3200);
+}
+
+function createSparkles() {
+    const scene = document.querySelector(".door-scene");
+
+    for (let i = 0; i < 35; i++) {
+        const sparkle = document.createElement("div");
+
+        sparkle.innerText = "✨";
+        sparkle.style.position = "absolute";
+        sparkle.style.left = Math.random() * 100 + "%";
+        sparkle.style.top = Math.random() * 100 + "%";
+        sparkle.style.fontSize = (10 + Math.random() * 20) + "px";
+        sparkle.style.pointerEvents = "none";
+        sparkle.style.animation = "twinkle 1s infinite alternate";
+
+        scene.appendChild(sparkle);
+
+        setTimeout(() => sparkle.remove(), 4000);
+    }
+}
+
+/* =================================
+   PAGE FLIP
+================================= */
+
+let pageFlip = null;
+let closingBook = false;
+let flipBusy = false;
+let closeTimer = null;
+let thankYouShown = false;
+
+const bookElement = document.getElementById("book");
+
+function getCurrentIndex() {
+    if (!pageFlip) return 0;
+    return pageFlip.getCurrentPageIndex();
+}
+
+function updatePageCounter() {
+    if (!pageFlip) return;
+
+    const index = getCurrentIndex();
+
+    const labels = {
+        0: "Front Cover",
+        2: "Pages 1 - 2",
+        4: "Pages 3 - 4",
+        6: "Pages 5 - 6",
+        8: "Pages 7 - 8",
+        10: "Pages 9 - 10",
+        12: "Back Cover"
+    };
+
+    document.getElementById("pageCounter").innerText =
+        labels[index] || "Our Memories ❤️";
+
+    document.getElementById("nextButton").innerText =
+        index >= 12 ? "Finish ✨" : "Next →";
+}
+
+/* OPEN MAGAZINE */
+
+function openMagazine() {
+    showScreen("bookScreen");
+
+    document.getElementById("musicPlayer").style.display = "flex";
+
+    closingBook = false;
+    flipBusy = false;
+    thankYouShown = false;
+
+    if (pageFlip) {
+        pageFlip.destroy();
+        pageFlip = null;
+    }
+
+    pageFlip = new St.PageFlip(bookElement, {
+        width: 500,
+        height: 650,
+
+        size: "stretch",
+        minWidth: 280,
+        maxWidth: 1000,
+        minHeight: 350,
+        maxHeight: 750,
+
+        drawShadow: true,
+        maxShadowOpacity: 0.75,
+        flippingTime: 1200,
+
+        usePortrait: false,
+        showCover: false,
+        autoSize: true,
+        mobileScrollSupport: true,
+        useMouseEvents: true,
+
+        startPage: 0,
+        disableFlipByClick: false
+    });
+
+    const pages = bookElement.querySelectorAll(".page");
+
+    pageFlip.loadFromHTML(pages);
+
+    pageFlip.on("init", function() {
+        updatePageCounter();
+    });
+
+    pageFlip.on("flip", function() {
+        updatePageCounter();
+        flipBusy = false;
+
+        if (closingBook) {
+            clearTimeout(closeTimer);
+
+            closeTimer = setTimeout(() => {
+                closeOneStep();
+            }, 1300);
+        }
+    });
+
+    pageFlip.on("changeState", function(event) {
+        if (event.data === "flipping") {
+            flipBusy = true;
+        }
+
+        if (event.data === "read") {
+            flipBusy = false;
+        }
+    });
+}
+
+/* NEXT PAGE */
+
+function nextPage() {
+    if (!pageFlip || closingBook || flipBusy) return;
+
+    const index = getCurrentIndex();
+
+    if (index >= 12) {
+        showThankYou();
+        return;
+    }
+
+    pageFlip.flipNext("bottom");
+}
+
+/* PREVIOUS PAGE */
+
+function previousPage() {
+    if (!pageFlip || closingBook || flipBusy) return;
+
+    if (getCurrentIndex() <= 0) return;
+
+    pageFlip.flipPrev("bottom");
+}
+
+/* =================================
+   ENDING ANIMATION
+================================= */
+
+function showThankYou() {
+    if (closingBook || thankYouShown) return;
+
+    thankYouShown = true;
+
+    document.getElementById("musicPlayer").style.display = "none";
+
+    showScreen("thankYouScreen");
+
+    document.getElementById("boxLid").classList.remove("open");
+    document.getElementById("boxGlow").classList.remove("show");
+
+    setTimeout(() => {
+        document.getElementById("boxLid").classList.add("open");
+        document.getElementById("boxGlow").classList.add("show");
+    }, 700);
+
+    startEndingPetals();
+}
+
+/* =================================
+   FALLING PETALS
+================================= */
+
+let petalTimer = null;
+
+function startEndingPetals() {
+    clearInterval(petalTimer);
+
+    petalTimer = setInterval(() => {
+        if (!document.getElementById("thankYouScreen").classList.contains("active")) {
+            return;
+        }
+
+        const petal = document.createElement("div");
+        petal.className = "petal";
+
+        const options = ["🌸","🌷","🌹","💗","✨"];
+
+        petal.innerText =
+            options[Math.floor(Math.random() * options.length)];
+
+        petal.style.left = Math.random() * 100 + "vw";
+        petal.style.animationDuration =
+            (5 + Math.random() * 5) + "s";
+
+        petal.style.fontSize =
+            (15 + Math.random() * 18) + "px";
+
+        document.body.appendChild(petal);
+
+        setTimeout(() => petal.remove(), 11000);
+
+    }, 300);
+}
+
+/* =================================
+   CLOSE MAGAZINE
+================================= */
+
+function closeMagazine() {
+    if (!pageFlip || closingBook) return;
+
+    closingBook = true;
+    flipBusy = false;
+
+    clearTimeout(closeTimer);
+    closeOneStep();
+}
+
+function closeOneStep() {
+    if (!pageFlip || !closingBook) return;
+
+    const index = getCurrentIndex();
+
+    if (index > 0) {
+        if (!flipBusy) {
+            pageFlip.flipPrev("bottom");
+        }
+
+        closeTimer = setTimeout(() => {
+            if (!pageFlip || !closingBook) return;
+
+            if (getCurrentIndex() === index) {
+                flipBusy = false;
+                closeOneStep();
+            }
+        }, 1450);
+
+    } else {
+        finishClosing();
+    }
+}
+
+function finishClosing() {
+    clearTimeout(closeTimer);
+
+    closingBook = false;
+    flipBusy = false;
+
+    if (pageFlip) {
+        pageFlip.destroy();
+        pageFlip = null;
+    }
+
+    document.getElementById("musicPlayer").style.display = "none";
+
+    music.pause();
+    music.currentTime = 0;
+    playPauseBtn.innerText = "▶";
+
+    showScreen("introScreen");
+
+    museumOpening = false;
+
+    document.getElementById("leftDoor").classList.remove("open");
+    document.getElementById("rightDoor").classList.remove("open");
+
+    const button = document.getElementById("unlockButton");
+    button.disabled = false;
+    button.innerText = "Unlock the Memories 💗";
+
+    document.getElementById("openingText").innerText =
+        "A LITTLE KEY TO A WORLD OF MEMORIES";
+}
+
+/* =================================
+   REPLAY STORY
+================================= */
+
+function replayStory() {
+    clearInterval(petalTimer);
+
+    document.querySelectorAll(".petal").forEach(p => p.remove());
+
+    if (pageFlip) {
+        pageFlip.destroy();
+        pageFlip = null;
+    }
+
+    closingBook = false;
+    flipBusy = false;
+    thankYouShown = false;
+    museumOpening = false;
+
+    music.pause();
+    music.currentTime = 0;
+    playPauseBtn.innerText = "▶";
+
+    document.getElementById("musicPlayer").style.display = "none";
+
+    document.getElementById("leftDoor").classList.remove("open");
+    document.getElementById("rightDoor").classList.remove("open");
+
+    document.getElementById("boxLid").classList.remove("open");
+    document.getElementById("boxGlow").classList.remove("show");
+
+    const button = document.getElementById("unlockButton");
+    button.disabled = false;
+    button.innerText = "Unlock the Memories 💗";
+
+    document.getElementById("openingText").innerText =
+        "A LITTLE KEY TO A WORLD OF MEMORIES";
+
+    showScreen("introScreen");
+}
+
+/* =================================
+   FLOATING HEARTS
+================================= */
+
+function createFloatingHeart() {
+    const heart = document.createElement("div");
+    heart.className = "floating-heart";
+
+    const hearts = ["💗","💕","♡","💖","🤍","💘"];
+
+    heart.innerText =
+        hearts[Math.floor(Math.random() * hearts.length)];
+
+    heart.style.left = Math.random() * 100 + "vw";
+
+    heart.style.fontSize =
+        (12 + Math.random() * 20) + "px";
+
+    heart.style.animationDuration =
+        (6 + Math.random() * 6) + "s";
+
+    document.body.appendChild(heart);
+
+    setTimeout(() => heart.remove(), 13000);
+}
+
+setInterval(createFloatingHeart, 650);
+
+</script>
+
+</body>
+</html>
